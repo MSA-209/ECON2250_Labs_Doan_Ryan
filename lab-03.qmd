@@ -403,7 +403,7 @@ library(gt)
 library(dplyr)
 
 # Create a simple data frame
-data = cps
+data("cps", package = "probstats4econ")
 
 # Alternatively you can do (same output):
 #gt(data)
@@ -417,10 +417,18 @@ cps %>%
 
 ```
 
-*Visualization replication 2* \AddToHookNext{env/Highlighting/begin}{\small}
+*Visualization replication 2* \AddToHookNext{env/Highlighting/begin}{\small}p
 
 ```{r, echo=T, eval=T}
-#| label: r graph gallery replication 2
+library(tidyverse)
+data("babynames", package = "probstats4econ")
+
+datal <- babynames %>%
+  slice_head(n=9)
+
+ggplot(datal, aes(x=name, y=count)) +
+  geom_segment( aes(x=name, xend=name, y=0, yend=count)) +
+  geom_point( size=5, color="red", fill=alpha("orange", 0.3), alpha=0.7, shape=21, stroke=2)
 
 ```
 
@@ -457,7 +465,7 @@ To submit your assignment:
 # Grading
 
 | Component                                                          | Points |
-|:----------------------------------------------------|:------------------|
+|:---------------------------------------------------|:-------------------|
 | Exercise 1                                                         | 5      |
 | Exercise 2                                                         | 5      |
 | Exercise 3                                                         | 80     |
