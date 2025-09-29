@@ -53,7 +53,7 @@ pacman::p_load(
   kableExtra,
   RColorBrewer,
   curl,
-  usethis)
+  usethis,gt)
 ```
 
 # Exercise 1: Creating your Own GitHub Repository
@@ -107,7 +107,9 @@ Type line below here:
 
 Hello!
 
-**To complete these exercise, you have to have at least one contributions from your teammates in your repository.**
+**To complete these exercise, you have to have at least**
+
+**one contributions from your teammates in your repository.**
 
 # Exercise 3: Creating Descriptive Statistics
 
@@ -397,7 +399,21 @@ There is website that host a collection of beautiful charts you might want to vi
 *Visualization replication 1* \AddToHookNext{env/Highlighting/begin}{\small}
 
 ```{r, echo=T, eval=T}
-#| label: r graph gallery replication 1
+library(gt)
+library(dplyr)
+
+# Create a simple data frame
+data = cps
+
+# Alternatively you can do (same output):
+#gt(data)
+
+# Use the gt function
+cps %>%
+  slice_head(n=5) %>%
+  gt()
+
+
 
 ```
 
@@ -441,7 +457,7 @@ To submit your assignment:
 # Grading
 
 | Component                                                          | Points |
-|:---------------------------------------------------------|:-------------|
+|:----------------------------------------------------|:------------------|
 | Exercise 1                                                         | 5      |
 | Exercise 2                                                         | 5      |
 | Exercise 3                                                         | 80     |
